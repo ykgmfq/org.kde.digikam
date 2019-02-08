@@ -1,0 +1,69 @@
+---
+id: org.kde.digikam
+branch: stable
+runtime: org.kde.Platform
+runtime-version: '5.12'
+sdk: org.kde.Sdk
+command: digikam
+finish-args:
+- '--share=ipc'
+- '--socket=x11'
+- '--socket=wayland'
+- '--share=network'
+- '--filesystem=home'
+rename-icon: digikam
+cleanup:
+- /include
+- /lib/*.a
+- /lib/debug
+- /lib/cmake
+- /share/man
+modules:
+- name: opencv
+  buildsystem: cmake-ninja
+  builddir: true
+  cleanup:
+  - /bin
+  config-opts:
+  - '-DENABLE_TESTING=OFF'
+  - '-DWITH_OPENCL=ON'
+  - '-DWITH_OPENGL=ON'
+  - '-DWITH_TBB=ON'
+  - '-DWITH_XINE=ON'
+  sources:
+  - type: archive
+    url: https://github.com/opencv/opencv/archive/4.0.1.tar.gz
+    sha256: 7b86a0ee804244e0c407321f895b15e4a7162e9c5c0d2efc85f1cadec4011af4
+- name: exiv2
+  buildsystem: cmake-ninja
+  builddir: true
+  cleanup:
+  - /bin
+  sources:
+  - type: archive
+    url: https://github.com/Exiv2/exiv2/archive/0.27.tar.gz
+    sha256: 74ae9db73b2e230fcd307017b1c6090dbea9936cd45b545bce2664de1754c389
+- name: boost
+  buildsystem: simple
+  build-commands:
+  - ./bootstrap.sh --prefix=/app --with-libraries=graph
+  - ./b2 install
+  sources:
+  - type: archive
+    url: https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
+    sha256: 9a2c2819310839ea373f42d69e733c339b4e9a19deab6bfec448281554aa4dbb
+- name: digikam
+  cleanup:
+  - /bin/cleanup_digikamdb
+  - /bin/digitaglinktree
+  - /bin/showfoto
+  buildsystem: cmake-ninja
+  config-opts:
+  - '-DENABLE_TESTING=OFF'
+  - '-DENABLE_QWEBENGINE=ON'
+  - '-DENABLE_APPSTYLES=ON'
+  builddir: true
+  sources:
+  - type: archive
+    url: https://github.com/KDE/digikam/archive/v6.0.0-beta3.tar.gz
+    sha256: 39d966252e6680729e76bd1d8b8b2f94dc3f69205710245b035e91ef12585c01
