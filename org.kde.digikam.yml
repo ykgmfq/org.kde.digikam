@@ -108,7 +108,7 @@ modules:
   - /bin/showfoto
   buildsystem: cmake-ninja
   config-opts:
-  - '-DENABLE_TESTING=OFF'
+  - '-DBUILD_TESTING=OFF'
   - '-DENABLE_QWEBENGINE=ON'
   - '-DENABLE_APPSTYLES=ON'
   builddir: true
