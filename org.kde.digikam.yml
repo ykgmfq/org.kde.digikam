@@ -109,6 +109,7 @@ modules:
   buildsystem: cmake-ninja
   config-opts:
   - '-DBUILD_TESTING=OFF'
+  - '-DENABLE_MYSQLSUPPORT=OFF'
   - '-DENABLE_QWEBENGINE=ON'
   - '-DENABLE_APPSTYLES=ON'
   builddir: true
