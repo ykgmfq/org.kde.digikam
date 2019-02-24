@@ -90,6 +90,17 @@ modules:
     sha1: 01c25c87ad34b490b12b86aef673caf61413aa5c
   cleanup:
   - '/lib/python*'
+- name: kfilemetadata
+  buildsystem: cmake-ninja
+  builddir: true
+  config-opts:
+  - '-DCMAKE_BUILD_TYPE=Release'
+  - '-DBUILD_TESTING=OFF'
+  sources:
+  - type: archive
+    url: https://download.kde.org/stable/frameworks/5.54/kfilemetadata-5.54.0.tar.xz
+    sha256: 4b6de53b791ad8cf19d5aa331555e3863f22e54adf6149668125635b820f86c2
+
 - name: digikam
   cleanup:
   - /bin/cleanup_digikamdb
