@@ -79,6 +79,17 @@ modules:
   - type: archive
     url: https://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2
     sha256: 9f13cf90dedbe3e52a19f43000d71fdf72e986beb9a5436dddcd61ff9d77a3ce
+- name: lensfun
+  buildsystem: cmake-ninja
+  config-opts:
+  - "-DINSTALL_HELPER_SCRIPTS=OFF"
+  - "-DCMAKE_BUILD_TYPE=RELEASE"
+  sources:
+  - type: archive
+    url: https://sourceforge.net/projects/lensfun/files/0.3.95/lensfun-0.3.95.tar.gz
+    sha1: 01c25c87ad34b490b12b86aef673caf61413aa5c
+  cleanup:
+  - '/lib/python*'
 - name: digikam
   cleanup:
   - /bin/cleanup_digikamdb
