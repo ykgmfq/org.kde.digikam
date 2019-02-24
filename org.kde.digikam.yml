@@ -54,6 +54,22 @@ modules:
   - type: archive
     url: https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
     sha256: 9a2c2819310839ea373f42d69e733c339b4e9a19deab6bfec448281554aa4dbb
+- name: marble
+  builddir: true
+  buildsystem: cmake-ninja
+  config-opts:
+  - '-DBUILD_MARBLE_TESTS=OFF'
+  - '-DWITH_DESIGNER_PLUGIN=OFF'
+  - '-DBUILD_MARBLE_APPS=OFF'
+  sources:
+  - type: archive
+    url: https://github.com/KDE/marble/archive/v18.12.2.tar.gz
+    sha256: 8073bf7a635468fa1043cb9e4f3dbd4c25bdb1d120b08d80e1ba7d723d5178bf
+  cleanup:
+  - /share/doc
+  - /share/plasma
+  - /share/metainfo
+  - /share/applications
 - name: digikam
   cleanup:
   - /bin/cleanup_digikamdb
