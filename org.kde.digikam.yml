@@ -114,5 +114,5 @@ modules:
   builddir: true
   sources:
   - type: archive
-    url: https://github.com/KDE/digikam/archive/v6.0.0-beta3.tar.gz
-    sha256: 39d966252e6680729e76bd1d8b8b2f94dc3f69205710245b035e91ef12585c01
+    url: https://github.com/KDE/digikam/archive/v6.0.0.tar.gz
+    sha256: 92c0244eb45e9b6022af82892f8e42ddde11472ab67e60d792e19f53488e4aed
