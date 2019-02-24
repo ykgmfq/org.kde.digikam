@@ -17,9 +17,13 @@ rename-icon: digikam
 cleanup:
 - /include
 - /lib/*.a
+- /lib/pkgconfig
 - /lib/debug
 - /lib/cmake
+- /mkspecs
+- /etc
 - /share/man
+- /share/kservices5
 modules:
 - name: opencv
   buildsystem: cmake-ninja
@@ -41,6 +45,7 @@ modules:
   builddir: true
   cleanup:
   - /bin
+  - /share/cmake
   sources:
   - type: archive
     url: https://github.com/Exiv2/exiv2/archive/0.27.tar.gz
@@ -106,6 +111,9 @@ modules:
   - /bin/cleanup_digikamdb
   - /bin/digitaglinktree
   - /bin/showfoto
+  - /share/solid
+  - /share/showfoto
+  - /share/application/org.kde.showfoto.desktop
   buildsystem: cmake-ninja
   config-opts:
   - '-DBUILD_TESTING=OFF'
